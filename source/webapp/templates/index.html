@@ -1,15 +1,35 @@
 {% extends 'base.html' %}
 {% block menu %}
-    <li><a href="{% url 'entry_add' %}">Add entry</a></li>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand p-2 flex-grow-2" href="#">Guest Book</a>
+            <a class="btn btn-sm btn-outline-secondary" href="{% url 'entry_add' %}">Add entry</a>
+        </div>
+    </nav>
 {% endblock %}
 {% block content %}
-    <h1>Guest Book:</h1>
     <hr/>
     {% for entry in entries %}
-        <h2>{{ entry.author }}</h2><h2>({{ entry.email }})</h2>
-        <p>{{ entry.text }}</p>
-        <p><a href="{% url 'entry_update' entry.pk %}">Edit</a></p>
-        <p><a href="{% url 'entry_delete' entry.pk %}">Delete</a></p>
+        <div class="card bg-light text-dark">
+            <div class="card-header">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-sm-8">
+                        <h4>{{ entry.author }} — {{ entry.email }}</h4>
+                    </div>
+                    <div class="col-sm-2">
+                        <a href="{% url 'entry_update' entry.pk %}" class="btn btn-outline-info btn-block">Edit</a>
+                    </div>
+                      <div class="col-sm-2">
+                        <a href="{% url 'entry_delete' entry.pk %}" class="btn btn-outline-danger btn-block">Delete</a>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <p class="card-text">{{ entry.text }}</p>
+            </div>
+        </div>
         <hr/>
     {% endfor %}
 {% endblock %}
