@@ -1,11 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from webapp.forms import EntryForm
-from webapp.models import Entry, STATUS_CHOICES
+from webapp.forms import EntryForm, SearchForm
+from webapp.models import Entry
 
 
 def index_view(request, *args, **kwargs):
-    entries = Entry.objects.filter(status=STATUS_CHOICES[0][0]).order_by('-created_at')
-
+    search = Entry.objects.filter(author__contains=)
+    entries = Entry.objects.filter(status="active").order_by('-created_at')
     return render(request, "index.html", context={
         'entries': entries
     })

@@ -8,7 +8,6 @@
     {% for entry in entries %}
         <h2>{{ entry.author }}</h2><h2>({{ entry.email }})</h2>
         <p>{{ entry.text }}</p>
-{#        <p><a href="{% url 'article_view' article.pk %}">More...</a></p>#}
         <p><a href="{% url 'entry_update' entry.pk %}">Edit</a></p>
         <p><a href="{% url 'entry_delete' entry.pk %}">Delete</a></p>
         <hr/>
