@@ -1,10 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from webapp.forms import EntryForm
-from webapp.models import Entry
+from webapp.models import Entry, STATUS_CHOICES
 
 
 def index_view(request, *args, **kwargs):
-    entries = Entry.objects.all()
+    entries = Entry.objects.filter(status=STATUS_CHOICES[0][0])
 
     return render(request, "index.html", context={
         'entries': entries
