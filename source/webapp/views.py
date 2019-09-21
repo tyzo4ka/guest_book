@@ -11,9 +11,9 @@ def index_view(request, *args, **kwargs):
     })
 
 
-# def article_view(request, pk):
-#     article = get_object_or_404(Article, pk=pk)
-#     return render(request, "article.html", context={"article": article})
+def entry_view(request, pk):
+    entry = get_object_or_404(Entry, pk=pk)
+    return render(request, "entry.html", context={"entry": entry})
 
 
 def entry_create_view(request, *args, **kwargs):
