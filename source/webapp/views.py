@@ -4,13 +4,13 @@ from webapp.models import Entry, STATUS_CHOICES
 
 
 def index_view(request, *args, **kwargs):
-    entries = Entry.objects.filter(status=STATUS_CHOICES[0][0])
+    entries = Entry.objects.filter(status=STATUS_CHOICES[0][0]).order_by('-created_at')
 
     return render(request, "index.html", context={
         'entries': entries
     })
 
-#
+
 # def article_view(request, pk):
 #     article = get_object_or_404(Article, pk=pk)
 #     return render(request, "article.html", context={"article": article})
