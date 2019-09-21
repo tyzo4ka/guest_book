@@ -1,10 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends 'base.html' %}
+{% block menu %}
+    <li><a href="{% url 'entry_add' %}">Add entry</a></li>
+{% endblock %}
+{% block content %}
+    <h1>Guest Book:</h1>
+    <hr/>
+    {% for entry in entries %}
+        <h2>{{ entry.name }}</h2><h2>({{ entry.email }})</h2>
+        <p>{{ entry.text }}</p>
+{#        <p><a href="{% url 'article_view' article.pk %}">More...</a></p>#}
+        <p><a href="{% url 'entry_update' entry.pk %}">Edit</a></p>
+        <p><a href="{% url 'entry_delete' entry.pk %}">Delete</a></p>
+        <hr/>
+    {% endfor %}
+{% endblock %}
